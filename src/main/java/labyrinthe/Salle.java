@@ -16,6 +16,13 @@ public class Salle implements ISalle{
     private int y;
     private ESalle type;
     private IEtage etage;
+    
+    public Salle(int x, int y, ESalle type, IEtage etage) {
+        this.x=x;
+        this.y=y;
+        this.type=type;
+        this.etage=etage;
+    }
 
     @Override
     public int getX() {
