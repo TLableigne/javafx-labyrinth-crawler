@@ -65,14 +65,8 @@ public class Dessin extends Canvas {
     }
 
     public void dessinSalles(IEtage etage) {
-        Color c = Color.rgb(200, 200, 200);
-        for (int x = 0; x < unite * 40; x++) {
-            for (int y = 0; y < unite * 40; y++) {
-                tampon.drawImage(murImage, x, y, unite, unite);
-            }
-        }
         for (ISalle s : etage) {
-            
+            Color c = Color.rgb(200, 200, 200);
             dessinSalle(s, c);
         }
     }
@@ -92,9 +86,6 @@ public class Dessin extends Canvas {
         }
     }
     
-    public void dessinMur(ISalle s, Color c) {
-        
-    }
 
     public void dessinPlusCourtChemin(ISprite p) {
         // ...
