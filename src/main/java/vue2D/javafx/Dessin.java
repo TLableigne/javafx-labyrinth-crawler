@@ -81,8 +81,6 @@ public class Dessin extends Canvas {
                 tampon.drawImage(escalierM, x, y, unite, unite);
             case ESCALIER_DESCENDANT ->
                 tampon.drawImage(escalierD, x, y, unite, unite);
-            default ->
-                tampon.drawImage(murImage, x, y, unite, unite);
         }
     }
     

@@ -54,17 +54,9 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
             return accessibles;
         }
 
-        int x = pos.getX();
-        int y = pos.getY();
-
-        for (ISalle s : this.etageCourant) {
-            int dx = Math.abs(s.getX() - x);
-            int dy = Math.abs(s.getY() - y);
-
-            if (dx + dy == 1) {
-                if (s.getType() != ESalle.NORMALE) {
-                    accessibles.add(s);
-                }
+        for (ISalle s : this) {
+            if (pos.estAdjacente(s)) {
+                accessibles.add(s);
             }
         }
 
