@@ -30,6 +30,7 @@ public class Dessin extends Canvas {
     private GraphicsContext tampon;
     private Image murImage;
     private Image solImage;
+    private Image salleImage;
     private Image escalierM;
     private Image escalierD;
     private int tailleLinkH = 6;
@@ -51,8 +52,9 @@ public class Dessin extends Canvas {
     }
 
     public void chargementImages() {
-        murImage = new Image("file:icons/mur0.gif");
+        murImage = new Image("file:icons/mur2.gif");
         solImage = new Image("file:icons/pyramide.png");
+        salleImage = new Image("file:icons/ground.gif");
         escalierM = new Image("file:icons/up.gif");
         escalierD = new Image("file:icons/down.gif");
     }
@@ -70,8 +72,20 @@ public class Dessin extends Canvas {
     }
 
     public void dessinSalle(ISalle s, Color c) {
-        // ...
+        int x = s.getX() * unite;
+        int y = s.getY() * unite;
+        switch (s.getType()) {
+            case NORMALE ->
+                tampon.drawImage(salleImage, x, y, unite, unite);
+            case ESCALIER_MONTANT ->
+                tampon.drawImage(escalierM, x, y, unite, unite);
+            case ESCALIER_DESCENDANT ->
+                tampon.drawImage(escalierD, x, y, unite, unite);
+            default ->
+                tampon.drawImage(murImage, x, y, unite, unite);
+        }
     }
+    
 
     public void dessinPlusCourtChemin(ISprite p) {
         // ...
