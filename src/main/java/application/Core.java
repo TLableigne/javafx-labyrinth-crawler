@@ -21,10 +21,22 @@ public class Core {
     }
 
     protected void initSprites(IVue vue) {
-        // creation du heros 
+        // creation du heros
         personnages.Heros h = new personnages.Heros(labyrinthe.getEntree());
         this.heros = new vue2D.sprites.HerosSprite(h, labyrinthe);
         vue.add(this.heros);
+
+        // Exercice 15 : Add 10 monsters
+        java.util.List<ISalle> salles = new java.util.ArrayList<>(labyrinthe);
+        java.util.Random rand = new java.util.Random();
+        for (int i = 0; i < 10; i++) {
+            if (!salles.isEmpty()) {
+                ISalle randomSalle = salles.get(rand.nextInt(salles.size()));
+                personnages.Monstre monstre = new personnages.Monstre(randomSalle);
+                vue2D.sprites.MonstreSprite ms = new vue2D.sprites.MonstreSprite(monstre);
+                vue.add(ms);
+            }
+        }
     }
 
     protected void jeu(IVue vue) {
@@ -38,7 +50,7 @@ public class Core {
                 Collection<ISalle> sallesAccessibles = labyrinthe.sallesAccessibles(s);
                 destination = s.faitSonChoix(sallesAccessibles); // on demande au personnage de faire son choix de salle
                 s.setPosition(destination); // deplacement
-                
+
             }
             // detection des collisions
             boolean collision = false;
@@ -59,7 +71,7 @@ public class Core {
                 System.out.println("Plus que " + vue.size() + " personnages ...");
             }
 
-            temporisation(10);
+            temporisation(75);
         }
         System.out.println("Gagné!");
     }

@@ -88,8 +88,8 @@ public class Salle implements ISalle {
         
         if (this.x == autre.getX() && this.y == autre.getY()) {
             
-            boolean descendre = (this.type == ESalle.ESCALIER_MONTANT && autre.getType() == ESalle.ESCALIER_DESCENDANT) && (this.etage.getNum() == autre.getEtage().getNum() + 1);
-            boolean monter = (this.type == ESalle.ESCALIER_DESCENDANT && autre.getType() == ESalle.ESCALIER_MONTANT) && (this.etage.getNum() == autre.getEtage().getNum() - 1);
+            boolean monter = (this.type == ESalle.ESCALIER_MONTANT && autre.getType() == ESalle.ESCALIER_DESCENDANT) && (this.etage.getNum() + 1 == autre.getEtage().getNum());
+            boolean descendre = (this.type == ESalle.ESCALIER_DESCENDANT && autre.getType() == ESalle.ESCALIER_MONTANT) && (this.etage.getNum() - 1 == autre.getEtage().getNum());
         
             return monter || descendre;
         }
