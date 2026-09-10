@@ -65,9 +65,29 @@ public class Dessin extends Canvas {
     }
 
     public void dessinSalles(IEtage etage) {
+        ISalle heroPos = null;
+        for (ISprite s : sprites) {
+            if (s instanceof vue2D.sprites.HerosSprite) {
+                heroPos = s.getPosition();
+                break;
+            }
+        }
+
         for (ISalle s : etage) {
             Color c = Color.rgb(200, 200, 200);
             dessinSalle(s, c);
+            
+            if (heroPos != null) {
+                int dx = Math.abs(s.getX() - heroPos.getX());
+                int dy = Math.abs(s.getY() - heroPos.getY());
+                int dist = dx + dy;
+                
+                double opacity = Math.min(dist * 0.15, 1.0);
+                if (opacity > 0) {
+                    tampon.setFill(new Color(0, 0, 0, opacity));
+                    tampon.fillRect(s.getX() * unite, s.getY() * unite, unite, unite);
+                }
+            }
         }
     }
 

@@ -32,6 +32,13 @@ public abstract class ASprite implements ISprite {
 
     @Override
     public ISalle faitSonChoix(Collection<ISalle> sallesAccessibles) {
+        if (personnage.getPosition() != null) {
+            int targetX = personnage.getPosition().getX() * vue2D.AVue.UNITE;
+            int targetY = personnage.getPosition().getY() * vue2D.AVue.UNITE;
+            if (xpix != targetX || ypix != targetY) {
+                return personnage.getPosition();
+            }
+        }
         return personnage.faitSonChoix(sallesAccessibles);
     }
 
@@ -43,5 +50,13 @@ public abstract class ASprite implements ISprite {
     @Override
     public void setPosition(ISalle s) {
         personnage.setPosition(s);
+    }
+    
+    public int getXpix() {
+        return xpix;
+    }
+    
+    public int getYpix() {
+        return ypix;
     }
 }

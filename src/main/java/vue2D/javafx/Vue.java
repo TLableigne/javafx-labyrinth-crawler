@@ -34,7 +34,25 @@ public class Vue extends AVue implements IVue {
         // dessiner les sprites
         for (ISprite s : this) {
             if (s.getPosition() != null && s.getPosition().getEtage() == labyrinthe.getEtageCourant()) {
-                s.setCoordonnees(s.getPosition().getX() * AVue.UNITE, s.getPosition().getY() * AVue.UNITE);
+                int targetX = s.getPosition().getX() * AVue.UNITE;
+                int targetY = s.getPosition().getY() * AVue.UNITE;
+                
+                if (s instanceof vue2D.sprites.ASprite) {
+                    vue2D.sprites.ASprite as = (vue2D.sprites.ASprite) s;
+                    int currentX = as.getXpix();
+                    int currentY = as.getYpix();
+                    int step = 2;
+                    
+                    if (currentX < targetX) currentX = Math.min(currentX + step, targetX);
+                    if (currentX > targetX) currentX = Math.max(currentX - step, targetX);
+                    if (currentY < targetY) currentY = Math.min(currentY + step, targetY);
+                    if (currentY > targetY) currentY = Math.max(currentY - step, targetY);
+                    
+                    s.setCoordonnees(currentX, currentY);
+                } else {
+                    s.setCoordonnees(targetX, targetY);
+                }
+                
                 s.dessiner(dessin.getGraphicsContext2D());
             }
         }
