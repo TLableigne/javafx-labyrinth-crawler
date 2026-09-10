@@ -22,9 +22,9 @@ public class Core {
 
     protected void initSprites(IVue vue) {
         // creation du heros 
-        //Heros h = new personnages.Heros(labyrinthe.getEntree());
-        //this.heros = new HerosSprite(h, labyrinthe);
-        //vue.add(this.heros);
+        personnages.Heros h = new personnages.Heros(labyrinthe.getEntree());
+        this.heros = new vue2D.sprites.HerosSprite(h, labyrinthe);
+        vue.add(this.heros);
     }
 
     protected void jeu(IVue vue) {

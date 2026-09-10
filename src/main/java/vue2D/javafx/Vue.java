@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import labyrinthe.ILabyrinthe;
 import vue2D.IVue;
 import vue2D.AVue;
+import vue2D.sprites.ISprite;
 
 /**
  *
@@ -29,6 +30,26 @@ public class Vue extends AVue implements IVue {
         // recopie du fond (image); murs + salles
         dessin.dessinFond();
         dessin.dessinSalles(labyrinthe.getEtageCourant());        // ...
+        
+        // dessiner les sprites
+        for (ISprite s : this) {
+            if (s.getPosition() != null && s.getPosition().getEtage() == labyrinthe.getEtageCourant()) {
+                s.setCoordonnees(s.getPosition().getX() * AVue.UNITE, s.getPosition().getY() * AVue.UNITE);
+                s.dessiner(dessin.getGraphicsContext2D());
+            }
+        }
+    }
+
+    @Override
+    public boolean add(ISprite sprite) {
+        super.add(sprite);
+        // si le sprite est controle par le clavier
+        if (sprite instanceof javafx.event.EventHandler) {
+            System.out.println("registering keylistener");
+            // association de l'ecouteur sur le clavier avec le composant graphique principal
+            this.scene.setOnKeyPressed((javafx.event.EventHandler) sprite);
+        }
+        return true;
     }
 
 }

@@ -6,6 +6,10 @@ import labyrinthe.ISalle;
 public class Heros extends APersonnage {
     private ISalle salleChoisie;
 
+    public Heros(ISalle positionInitiale) {
+        this.setPosition(positionInitiale);
+    }
+
     public ISalle getSalleChoisie() {
         return salleChoisie;
     }
