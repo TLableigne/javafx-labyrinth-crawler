@@ -37,7 +37,6 @@ Optimisation de `Dessin.dessinSalles` après constat d'un ralentissement. Suppre
 
 ### Séance 9 — 08/09/2026
 
-Finalisation et validation de l'**Objectif 1** : affichage fluide de l'étage et intégration sur `main`.
 **Exercice 8 :** création de `sallesAccessibles` pour déterminer les déplacements possibles du héros.
 
 ### Séance 10 — 09/09/2026
@@ -46,8 +45,16 @@ Finalisation et validation de l'**Objectif 1** : affichage fluide de l'étage et
 **Exercice 11 :** création de la classe abstraite `ASprite` implémentant l'interface `ISprite` par composition avec un `IPersonnage`. Mise en place de la gestion des coordonnées graphiques (`xpix`, `ypix`) et de la méthode `dessiner` pour le rendu de l'image.
 **Exercice 12 :** création de la classe `HerosSprite` héritant de `ASprite`. Chargement du sprite de Link (`LinkRunShieldL1.gif`) et implémentation de `EventHandler<KeyEvent>` (`handle`) pour gérer les déplacements du héros avec les flèches directionnelles et les changements d'étage ('M' pour monter, 'D' pour descendre).
 **Exercice 13 :** initialisation du héros dans `Core.initSprites`, affichage des sprites sur l'étage affiché dans `Vue.dessiner`, et ajout de l'écouteur clavier sur la scène lors de l'enregistrement du sprite du héros (`Vue.add`).
-Validation et finalisation complète de l'**Objectif 2** (déplacement interactif du héros au clavier dans le labyrinthe).
 
-### Séance 11 — 11/09/2026
+### Séance 11 — 10/09/2026
 
-**Exercices 14 à 16 :** création de `Monstre` et `MonstreSprite`, ajout des monstres et gestion des collisions. Utilisation de `CopyOnWriteArrayList` pour éviter les modifications concurrentes. Validation de l'**Objectif 3** et finalisation des livrables.
+**Exercice 14 :** création de la classe `Monstre` (héritant de `APersonnage`) avec déplacement aléatoire via `faitSonChoix` parmi les salles accessibles, et de la classe graphique `MonstreSprite` (héritant de `ASprite`) avec le chargement de l'image `monstre1.gif`.
+**Exercice 15 :** instanciation et placement aléatoire d'une dizaine de monstres dans le labyrinthe (`Core.initSprites`).
+**Exercice 16 :** modification de `AVue` pour hériter de `CopyOnWriteArrayList` afin d'éviter les exceptions `ConcurrentModificationException` lors de la suppression concurrente de monstres lors des collisions avec le héros.
+Correction d'un problème dans `Salle.estAdjacente` inversant la logique des escaliers montants et descendants, rétablissant la transition correcte entre les étages. 
+
+### Séance 12 — 10/09/2026
+
+**Exercice 17 :** déplacement fluide des sprites pixel par pixel dans `Vue.dessiner` en découplant le déplacement logique du rendu graphique, avec attente dans `ASprite.faitSonChoix` que l'animation soit terminée.
+**Exercice 18 :** ajout d'un éclairage localisé autour du héros dans `Dessin.dessinSalles` en assombrissant progressivement les salles selon leur distance de Manhattan.
+
