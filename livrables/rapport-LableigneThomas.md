@@ -20,7 +20,7 @@ Lecture du sujet et prise en main du projet. Initialisation de NetBeans et du d�
 
 ### Séance 5 — 03/09/2026
 
-**Exercice 5 :** implémentation de l'adjacence entre salles sur un même étage et début de la gestion des escaliers. Ajout de tests unitaires dans `SalleTest`.
+**Exercice 5 :** implémentation de l'adjacence entre salles sur un même étage et début de la gestion des escaliers.
 
 ### Séance 6 — 04/09/2026
 
@@ -42,7 +42,11 @@ Finalisation et validation de l'**Objectif 1** : affichage fluide de l'étage et
 
 ### Séance 10 — 09/09/2026
 
-**Exercices 9 à 13 :** création de `APersonnage`, `Heros`, `ASprite` et `HerosSprite`. Gestion des déplacements au clavier et affichage du héros. Validation de l'**Objectif 2**.
+**Exercices 9 & 10 :** création de la classe abstraite `APersonnage` et de la classe `Heros` avec la gestion de la position et de l'attribut `salleChoisie` retourné par `faitSonChoix`.
+**Exercice 11 :** création de la classe abstraite `ASprite` implémentant l'interface `ISprite` par composition avec un `IPersonnage`. Mise en place de la gestion des coordonnées graphiques (`xpix`, `ypix`) et de la méthode `dessiner` pour le rendu de l'image.
+**Exercice 12 :** création de la classe `HerosSprite` héritant de `ASprite`. Chargement du sprite de Link (`LinkRunShieldL1.gif`) et implémentation de `EventHandler<KeyEvent>` (`handle`) pour gérer les déplacements du héros avec les flèches directionnelles et les changements d'étage ('M' pour monter, 'D' pour descendre).
+**Exercice 13 :** initialisation du héros dans `Core.initSprites`, affichage des sprites sur l'étage affiché dans `Vue.dessiner`, et ajout de l'écouteur clavier sur la scène lors de l'enregistrement du sprite du héros (`Vue.add`).
+Validation et finalisation complète de l'**Objectif 2** (déplacement interactif du héros au clavier dans le labyrinthe).
 
 ### Séance 11 — 11/09/2026
 
