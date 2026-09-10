@@ -77,12 +77,10 @@ public class Salle implements ISalle {
     @Override
     public boolean estAdjacente(ISalle autre) {
 
-        boolean adjacentBas = this.y == autre.getY() - 1;
-        boolean adjacentHaut = this.y == autre.getY() + 1;
-        boolean adjacentGauche = this.x == autre.getX() - 1;
-        boolean adjacentDroite = this.x == autre.getX() + 1;
+        int dx = Math.abs(this.x - autre.getX());
+        int dy = Math.abs(this.y - autre.getY());
         
-        boolean memeEtage = this.etage.equals(autre.getEtage()) && (adjacentBas || adjacentDroite || adjacentGauche || adjacentHaut);
+        boolean memeEtage = this.etage.equals(autre.getEtage()) && (dx + dy == 1);
         
         if (memeEtage) {
             return true;
