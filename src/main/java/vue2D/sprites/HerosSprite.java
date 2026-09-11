@@ -9,16 +9,26 @@ import labyrinthe.ILabyrinthe;
 import labyrinthe.ISalle;
 import java.util.Collection;
 
+/**
+ * L'image graphique représentant le héros à l'écran.
+ * Gère également les entrées clavier pour le déplacer.
+ */
 public class HerosSprite extends ASprite implements EventHandler<KeyEvent> {
 
     private ILabyrinthe labyrinthe;
 
+    /**
+     * Crée l'affichage du héros avec son image et le lien vers le labyrinthe.
+     */
     public HerosSprite(IPersonnage p, ILabyrinthe labyrinthe) {
         super(p);
         this.labyrinthe = labyrinthe;
         this.image = new Image("file:icons/link/LinkRunShieldL1.gif");
     }
 
+    /**
+     * Réagit aux touches du clavier pour changer la direction du héros.
+     */
     @Override
     public void handle(KeyEvent event) {
         if (!(this.personnage instanceof Heros)) return;

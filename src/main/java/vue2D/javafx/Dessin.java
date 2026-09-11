@@ -12,6 +12,7 @@ import vue2D.sprites.ISprite;
 import labyrinthe.IEtage;
 
 /**
+ * Zone de dessin (Canvas) où les éléments graphiques du jeu sont tracés.
  *
  * @author INFO Professors team
  */
@@ -36,6 +37,9 @@ public class Dessin extends Canvas {
     private int tailleLinkH = 6;
     private int tailleLinkL = 2;
 
+    /**
+     * Initialise la zone de dessin et charge les images.
+     */
     public Dessin(ILabyrinthe labyrinthe, Collection<ISprite> sprites) {
         this.labyrinthe = labyrinthe;
         this.sprites = sprites;
@@ -51,6 +55,9 @@ public class Dessin extends Canvas {
         dessinFond();
     }
 
+    /**
+     * Charge toutes les images du jeu (murs, sols, escaliers).
+     */
     public void chargementImages() {
         murImage = new Image("file:icons/mur2.gif");
         solImage = new Image("file:icons/pyramide.png");
@@ -59,11 +66,17 @@ public class Dessin extends Canvas {
         escalierD = new Image("file:icons/down.gif");
     }
 
+    /**
+     * Dessine l'image de fond sur tout l'écran.
+     */
     public void dessinFond() {
         tampon.drawImage(solImage, 0, 0, unite * largeur,
                 unite * hauteur);
     }
 
+    /**
+     * Dessine toutes les salles de l'étage, avec un effet d'ombre autour du héros.
+     */
     public void dessinSalles(IEtage etage) {
         ISalle heroPos = null;
         for (ISprite s : sprites) {
@@ -91,6 +104,9 @@ public class Dessin extends Canvas {
         }
     }
 
+    /**
+     * Dessine une seule salle à l'écran selon son type (normale, escalier...).
+     */
     public void dessinSalle(ISalle s, Color c) {
         int x = s.getX() * unite;
         int y = s.getY() * unite;
@@ -105,6 +121,9 @@ public class Dessin extends Canvas {
     }
     
 
+    /**
+     * Affiche le plus court chemin vers la sortie.
+     */
     public void dessinPlusCourtChemin(ISprite p) {
         // ...
     }

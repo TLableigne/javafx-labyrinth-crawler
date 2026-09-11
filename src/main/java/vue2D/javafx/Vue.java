@@ -8,6 +8,7 @@ import vue2D.AVue;
 import vue2D.sprites.ISprite;
 
 /**
+ * Gère l'affichage général du jeu (la fenêtre, la scène et les éléments graphiques).
  *
  * @author INFO Professors team
  */
@@ -17,6 +18,9 @@ public class Vue extends AVue implements IVue {
     ILabyrinthe labyrinthe;
     public Scene scene;
 
+    /**
+     * Prépare la fenêtre et le dessin à partir du labyrinthe donné.
+     */
     public Vue(ILabyrinthe labyrinthe) {
         this.labyrinthe = labyrinthe;
         dessin = new Dessin(labyrinthe, this);
@@ -25,6 +29,9 @@ public class Vue extends AVue implements IVue {
         root.getChildren().add(dessin);
     }
 
+    /**
+     * Met à jour l'affichage de l'image de fond, du labyrinthe et des personnages.
+     */
     @Override
     public void dessiner() {
         // recopie du fond (image); murs + salles
@@ -58,6 +65,9 @@ public class Vue extends AVue implements IVue {
         }
     }
 
+    /**
+     * Ajoute un personnage à la vue et écoute le clavier si c'est le héros.
+     */
     @Override
     public boolean add(ISprite sprite) {
         super.add(sprite);

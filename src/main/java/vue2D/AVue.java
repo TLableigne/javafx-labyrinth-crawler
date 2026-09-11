@@ -5,12 +5,16 @@ import labyrinthe.ISalle;
 import vue2D.sprites.ISprite;
 
 /**
-*
-* @author INFO Professors team
-*/
+ * Vue abstraite qui contient les éléments graphiques (sprites) à afficher.
+ *
+ * @author INFO Professors team
+ */
 public abstract class AVue extends CopyOnWriteArrayList<ISprite> implements IVue{
     public static final int UNITE = 20;
     
+    /**
+     * Ajoute un élément graphique (sprite) et calcule sa position à l'écran.
+     */
     @Override
     public boolean add(ISprite sprite){
     	super.add(sprite);
