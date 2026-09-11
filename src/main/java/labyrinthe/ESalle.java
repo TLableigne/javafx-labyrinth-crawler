@@ -1,6 +1,7 @@
 package labyrinthe;
 
 /**
+ * Les différents types de salles qui existent dans le jeu.
  *
  * @author INFO Professors team
  */

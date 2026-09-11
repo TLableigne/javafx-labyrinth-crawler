@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Représente un niveau (étage) du labyrinthe qui contient plusieurs salles.
  *
  * @author INFO Professors team
  */
@@ -16,16 +17,25 @@ public class Etage extends ArrayList<ISalle> implements IEtage {
     private int hauteur;
     private int num;
 
+    /**
+     * Crée un étage par défaut avec une taille de 40x40.
+     */
     public Etage() {
         largeur = 40;
         hauteur = 40;
         num = 1;
     }
 
+    /**
+     * Crée un étage avec un numéro identifiant.
+     */
     public Etage(int id) {
         this.num = id;
     }
 
+    /**
+     * Lit un fichier texte pour construire l'étage et placer ses salles.
+     */
     @Override
     public void charger(String file) throws IOException {
         this.clear();

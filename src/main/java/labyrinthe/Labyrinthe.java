@@ -6,6 +6,7 @@ import java.util.Collection;
 import personnages.IPersonnage;
 
 /**
+ * Représente le labyrinthe complet (un ensemble de salles).
  *
  * @author professor team
  */
@@ -15,6 +16,10 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
     private ISalle entree;
     private ISalle sortie;
 
+    /**
+     * Crée le labyrinthe en chargeant les étages depuis des fichiers.
+     * Cherche et définit l'entrée et la sortie.
+     */
     public Labyrinthe() throws IOException {
         super();
         IEtage etage1 = new Etage(1);
@@ -45,6 +50,9 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         }
     }
 
+    /**
+     * Retourne les salles où le héros peut se déplacer depuis sa position.
+     */
     @Override
     public Collection<ISalle> sallesAccessibles(IPersonnage heros) {
         Collection<ISalle> accessibles = new ArrayList<>();
@@ -63,26 +71,41 @@ public class Labyrinthe extends ArrayList<ISalle> implements ILabyrinthe {
         return accessibles;
     }
 
+    /**
+     * Retourne la salle d'entrée du labyrinthe.
+     */
     @Override
     public ISalle getEntree() {
         return this.entree;
     }
 
+    /**
+     * Retourne la salle de sortie du labyrinthe.
+     */
     @Override
     public ISalle getSortie() {
         return this.sortie;
     }
 
+    /**
+     * Retourne l'étage actuel où se trouve le joueur.
+     */
     @Override
     public IEtage getEtageCourant() {
         return this.etageCourant;
     }
 
+    /**
+     * Change l'étage actuel.
+     */
     @Override
     public void setEtageCourant(IEtage etage) {
         this.etageCourant = etage;
     }
 
+    /**
+     * Calcule le chemin pour aller d'une salle à une autre.
+     */
     @Override
     public Collection<ISalle> chemin(ISalle u, ISalle v) {
         return null;
