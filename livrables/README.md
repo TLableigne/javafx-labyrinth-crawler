@@ -6,4 +6,3 @@
 - **Objectif 4 : Améliorations simples (animations fluides, éclairage localisé)** — 10 septembre 2026
 
 ---
-*Objectif 5 (Améliorations plus complexes basées sur les plus courts chemins) : à venir.*
