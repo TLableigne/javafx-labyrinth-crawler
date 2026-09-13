@@ -8,6 +8,7 @@ import vue2D.IVue;
 import vue2D.sprites.ISprite;
 
 /**
+ * Le moteur du jeu. Gère le labyrinthe, les personnages et la boucle principale.
  *
  * @author arpecher
  */
@@ -15,11 +16,17 @@ public class Core {
     ISprite heros;
     ILabyrinthe labyrinthe;
 
+    /**
+     * Initialise le labyrinthe.
+     */
     protected void initLabyrinthe() throws IOException {
         // creation du labyrinthe
         labyrinthe = new labyrinthe.Labyrinthe();
     }
 
+    /**
+     * Crée le héros et les monstres, puis les ajoute à l'affichage (vue).
+     */
     protected void initSprites(IVue vue) {
         // creation du heros
         personnages.Heros h = new personnages.Heros(labyrinthe.getEntree());
@@ -39,6 +46,9 @@ public class Core {
         }
     }
 
+    /**
+     * Boucle principale du jeu : déplace les personnages et gère les collisions.
+     */
     protected void jeu(IVue vue) {
         // boucle principale
         ISalle destination = null;
@@ -76,6 +86,9 @@ public class Core {
         System.out.println("Gagné!");
     }
 
+    /**
+     * Met le jeu en pause pour un instant (pour contrôler la vitesse du jeu).
+     */
     protected void temporisation(int nb) {
         try {
             Thread.sleep(nb); // pause de nb millisecondes

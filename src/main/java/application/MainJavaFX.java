@@ -9,11 +9,15 @@ import vue2D.javafx.Vue;
 
 
 /**
- * JavaFX MainJavaFX
+ * Point d'entrée de l'application graphique.
+ * Initialise la fenêtre et lance le moteur du jeu.
  */
 public class MainJavaFX extends Application {
     private Core core;
 
+    /**
+     * Démarre l'application, crée la fenêtre et lance le jeu en tâche de fond.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         core = new Core();
@@ -49,6 +53,9 @@ public class MainJavaFX extends Application {
        
     }
 
+    /**
+     * Lancement du programme principal.
+     */
     public static void main(String[] args) {
         launch();
     }

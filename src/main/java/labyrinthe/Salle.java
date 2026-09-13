@@ -7,6 +7,7 @@ package labyrinthe;
 import java.util.Objects;
 
 /**
+ * Représente une case (salle) du labyrinthe à une position donnée.
  *
  * @author tlableigne
  */
@@ -17,6 +18,9 @@ public class Salle implements ISalle {
     private ESalle type;
     private IEtage etage;
 
+    /**
+     * Crée une salle avec sa position (x, y), son type et son étage.
+     */
     public Salle(int x, int y, ESalle type, IEtage etage) {
         this.x = x;
         this.y = y;
@@ -74,6 +78,9 @@ public class Salle implements ISalle {
         return Objects.equals(this.etage, other.etage);
     }
 
+    /**
+     * Vérifie si on peut passer directement de cette salle à une autre.
+     */
     @Override
     public boolean estAdjacente(ISalle autre) {
 

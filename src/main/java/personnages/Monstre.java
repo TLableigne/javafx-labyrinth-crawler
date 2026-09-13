@@ -6,14 +6,24 @@ import java.util.List;
 import java.util.Random;
 import labyrinthe.ISalle;
 
+/**
+ * Représente un monstre dans le labyrinthe.
+ * Il se déplace de façon aléatoire.
+ */
 public class Monstre extends APersonnage {
     private Random rand;
 
+    /**
+     * Crée un monstre et le place dans une salle de départ.
+     */
     public Monstre(ISalle positionInitiale) {
         this.setPosition(positionInitiale);
         this.rand = new Random();
     }
 
+    /**
+     * Choisit une salle au hasard parmi celles accessibles pour s'y déplacer.
+     */
     @Override
     public ISalle faitSonChoix(Collection<ISalle> sallesAccessibles) {
         if (sallesAccessibles == null || sallesAccessibles.isEmpty()) {
